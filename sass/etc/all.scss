@@ -1,0 +1,79 @@
+// 组件阴影
+@mixin box-shadow($h-shadow,$v-shadow,$blur,$spread,$shadow-color) {
+  -webkit-box-shadow: $h-shadow $v-shadow $blur $spread $shadow-color;
+  -moz-box-shadow: $h-shadow $v-shadow $blur $spread $shadow-color;
+  -ms-box-shadow: $h-shadow $v-shadow $blur $spread $shadow-color;
+  box-shadow: $h-shadow $v-shadow $blur $spread $shadow-color;
+}
+
+// 组件阴影
+.shadow-panel{
+  @include box-shadow(0, 1px, 2px, 0, rgba(0,0,0,0.2));
+}
+
+// 底层图层
+.shadow-panel{
+  z-index: 0 !important;
+}
+
+// 字符图标
+.x-fa {
+  display: inline-block;
+}
+
+.x-title-text-default:after {
+  display:none !important;
+}
+
+@mixin btn-border($background-color){
+  background-color: $background-color;
+  border-color: $background-color !important;
+  .x-btn-inner-default-toolbar-small{
+    color: $lightest-color;
+  }
+  &:hover{
+    .x-btn-inner-default-toolbar-small,.x-btn-inner-default-small{
+      color: $background-color;
+    }
+    .x-btn-icon-el-default-small,.x-btn-icon-el-default-toolbar-small{
+      color: $background-color;
+    }
+    background-color: transparent;
+  }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($h-shadow,$v-shadow,$blur,$spread,$shadow-color) {
+  $value: $h-shadow, $v-shadow, $blur, $spread, $shadow-color;
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  -ms-box-shadow: $value;
+  box-shadow: $value;
+}
+
+*:focus {
+  outline:0 !important;
+}
+
+.x-menu-header {
+  z-index: 0 !important;
+}
+
+.x-css-shadow{
+  box-shadow:none !important;
+}
+
+
+.alignRight {
+  float: right;
+}
+
+.boldFont {
+  font-weight: bold;
+}

@@ -1,0 +1,64 @@
+// 基础样式 背景色
+$base-color: #32404E;
+// 基础样式 前景色
+$lightest-color: #fff;
+//error红
+$login-error-color: #f00;
+
+// 导航栏
+$panel-navigation-background-color: #32404e;
+$panel-navigation-item-line-height: 64px;
+$panel-navigation-item-text-color: #ADB3B8;
+$panel-header-background-color: dynamic($base-color);
+
+// 工具栏按钮
+$button-toolbar-background-color: transparent;
+$button-toolbar-border-color: transparent;
+$button-toolbar-background-color-over: #efefef;
+$button-toolbar-background-color-pressed: #D1D1D1;
+
+.x-title-text-default:after {
+  display:none !important;
+}
+
+//登录页面dialog
+$dialog-login-background-color: #83c748;
+$create-account-background-color: #a1a1a2;
+$dialog-trigger-color: #e5e5e5;
+$circle-border-radius:50%;
+$panel-navigation-background-color: #32404e;
+$panel-navigation-item-line-height: 64px;
+$panel-navigation-item-text-color: #ADB3B8;
+
+$circle-border-radius:50%;
+$base-border-color: #ddd;
+$lightest-color:#fff;
+$font-weight: normal;
+
+$accordion-header-background-color: $lightest-color;
+$accordion-header-color: #333;
+
+$social-facebook-btn-background: #167abc;
+$social-twitter-btn-background: #03b4d5;
+$social-google-plus-btn-background: #e44959;
+$social-envelope-btn-background: #7754aa;
+
+$button-toolbar-background-color: transparent;
+$button-toolbar-border-color: transparent;
+$button-toolbar-hover-background-color: #efefef;
+
+
+
+//Form and Toolbar Button UI colors
+
+$color-blue: #167abc;
+$color-soft-cyan: #03b4d5;
+$color-soft-blue: #2eadf5;
+$color-soft-green: #9cc96b;
+$color-soft-red: #e44959;
+$color-soft-purple: #925e8b;
+$color-gray: #949495;
+$color-green: #16b603;
+
+$blank-page-background-color: #ebebeb;
+$blank-page-color :#cacaca;

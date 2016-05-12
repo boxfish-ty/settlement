@@ -1,9 +1,19 @@
-Ext.define('settlement.order.view.OrderController', {
+Ext.define('settlement.trade.view.TradeController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.order',
+    alias: 'controller.trade',
     require:[
       'Ext.grid.*','Ext.data.Model'
     ],
+    //搜索栏 拉伸
+    onAddFilter:function(){
+        var tradeAddFilter  = (Ext.ComponentQuery.query('[itemId=tradeAddFilter]')[0]);
+        var tradeAddFilterBtn   = (Ext.ComponentQuery.query('[itemId=tradeAddFilterBtn]')[0]);
+        var collapsing     = tradeAddFilter.micro;
+
+        tradeAddFilter.animate({dynamic: true,to: {height:collapsing?100:50}});
+        tradeAddFilter.micro=(collapsing?false:true);
+        tradeAddFilterBtn.setText(collapsing?'-':'+');
+    },
 
     //初始化宽高
     onInit:function(grid, eOpts){

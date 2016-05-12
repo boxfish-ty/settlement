@@ -59,7 +59,7 @@ Ext.define('settlement.order.view.Order', {
             align : 'center'
           },{
             text:'用户ID',
-            dataIndex:'userID',
+            dataIndex:'userId',
             sortable:true,
             width:70,
             align : 'center'
@@ -73,50 +73,31 @@ Ext.define('settlement.order.view.Order', {
             text:'姓名',
             dataIndex:'name',
             sortable:true,
-            width:80,
+            width:100,
             align : 'center'
           },{
-            text:'订单号',
-            dataIndex:'code',
+            text:'订单编号',
+            dataIndex:'orderCode',
             sortable:true,
             width:150,
             align : 'center'
           },{
             text:'金额',
-            dataIndex:'totalPrice',
+            dataIndex:'payTrades.payMoney',
             sortable:true,
-            width:80,
+            width:100,
             align : 'center'
           },{
             text:'下单时间',
             dataIndex:'createTime',
             sortable:true,
-            width:120,
+            width:150,
             align : 'center'
           },{
             text:'订单状态',
-            dataIndex:'status',
+            dataIndex:'orderStatus',
             sortable:true,
-            width:80,
-            align : 'center'
-          },{
-            text:'付款时间',
-            dataIndex:'pay_time',
-            sortable:true,
-            width:120,
-            align : 'center'
-          },{
-            text:'付款方式',
-            dataIndex:'email',
-            sortable:true,
-            width:80,
-            align : 'center'
-          }
-          ,{
-            text:'支付账号',
-            dataIndex:'remark_title',
-            sortable:true,
-            width:120,
+            width:100,
             align : 'center'
           },{
             text:'服务内容',
@@ -124,21 +105,7 @@ Ext.define('settlement.order.view.Order', {
             sortable:true,
             width:200,
             align : 'center'
-          },
-          {
-            menuDisabled: true,
-            sortable: false,
-            text:'操作',
-            align : 'center',
-            xtype: 'actioncolumn',
-            width: 100,
-            items: [{
-                iconCls: 'x-fa fa-sign-out',
-                tooltip: '删除',
-                handler:  'onDelete'
-            }]
           }
-
         ],
           // 工具栏
         tbar: [
@@ -147,44 +114,43 @@ Ext.define('settlement.order.view.Order', {
                       fieldLabel:'用户ID',
                       labelWidth:45,
                       name: 'condition',
-                      itemId: 'userIDQuery',
-                      reference:'userIDQuery',
-                      width:150,
+                      // itemId: 'userIDQuery',
+                      // reference:'userIDQuery',
+                      width:130,
+                      emptyText: '',
+                      allowBlank: true,
+                      listeners:{
+                      }
+                  },{
+                      xtype: 'textfield',
+                      fieldLabel:'账号',
+                      labelWidth:45,
+                      name: 'condition',
+                      // itemId: 'codeQuery',
+                      // reference:'codeQuery',
+                      width:170,
                       emptyText: '',
                       allowBlank: true,
                       listeners:{
                       }
                   },
-                      // 条件查询
-                {
-                    xtype: 'textfield',
-                    fieldLabel:'订单号',
-                    labelWidth:45,
-                    name: 'condition',
-                    // itemId: 'codeQuery',
-                    // reference:'codeQuery',
-                    width:255,
-                    emptyText: '',
-                    allowBlank: true,
-                    listeners:{
-                    }
-                },{
-                    xtype: 'textfield',
-                    fieldLabel:'账号',
-                    labelWidth:45,
-                    name: 'condition',
-                    // itemId: 'codeQuery',
-                    // reference:'codeQuery',
-                    width:255,
-                    emptyText: '',
-                    allowBlank: true,
-                    listeners:{
-                    }
+                  {
+                      xtype: 'textfield',
+                      fieldLabel:'订单号',
+                      labelWidth:45,
+                      name: 'condition',
+                      // itemId: 'codeQuery',
+                      // reference:'codeQuery',
+                      width:170,
+                      emptyText: '',
+                      allowBlank: true,
+                      listeners:{
+                      }
                 },{
                      xtype: 'combobox',
-                     padding:'0 0 0 25',
                      fieldLabel: '订单状态',
                      labelWidth:60,
+                     width:170,
                      itemId: 'orderStatusComboBox',
                      reference:'orderStatusComboBox',
                      bind:{
@@ -192,7 +158,6 @@ Ext.define('settlement.order.view.Order', {
                      },
                      value:'all',
                      forceSelection: true,
-                     width:200,
                      loadMask:false,
                      triggerAction:'all',
                     //  multiSelect: true,
@@ -201,6 +166,27 @@ Ext.define('settlement.order.view.Order', {
                      valueField: 'key',
                     //  emptyText: '请选择',
                      allowBlank: true
+                 },{
+                     xtype: 'datefield',
+                     anchor: '100%',
+                     padding:'0 0 0 5',
+                     fieldLabel:'下单时间',
+                     labelWidth:60,
+                     width:185,
+                     name: 'beginDate',
+                     maxValue: new Date(),
+                     itemId:'beginDate'
+                 },{
+                             html: '至',
+                             padding:'0 0 0 2'
+                     },
+                 {
+                     xtype: 'datefield',
+                     anchor: '100%',
+                     width:125,
+                     name: 'endDate',
+                     maxValue: new Date(),
+                     itemId:'endDate'
                  }, {
                      text: '查询',
                      iconCls: 'x-fa fa-search',
@@ -214,7 +200,7 @@ Ext.define('settlement.order.view.Order', {
           bbar: [
                 {
                     xtype: 'pagingtoolbar',
-                    pageSize: 20,
+                    pageSize: 10,
                     displayInfo: true,
                     emptyMsg: '没有数据',
                     displayMsg: '当前显示{0}-{1}条记录 / 共{2}条记录 ',

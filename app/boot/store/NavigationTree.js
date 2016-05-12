@@ -21,24 +21,29 @@ Ext.define('settlement.store.NavigationTree', {
             viewType: 'Order',
             leaf: true
           },{
+            text: '支付流水',
+            iconCls: 'x-fa fa-eject',
+            viewType: 'Trade',
+            leaf: true
+          },{
             text: '账户信息',
             iconCls: 'x-fa fa-user',
-            viewType: 'Account',
+            // viewType: 'Account',
             leaf: true
           },{
             text: '通道对账',
             iconCls: 'x-fa fa-credit-card',
-            viewType: 'Channel',
+            // viewType: 'Channel',
             leaf: true
           },{
             text: '资金对账',
             iconCls: 'x-fa fa-adjust',
-            viewType: 'Fund',
+            // viewType: 'Fund',
             leaf: true
           },{
             text: '转账记录',
-            iconCls: 'x-fa fa-magic',
-            viewType: 'Record',
+            iconCls: 'x-fa fa-edit',
+            // viewType: 'Record',
             leaf: true
           }
             ]

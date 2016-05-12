@@ -55,84 +55,80 @@ Ext.define('settlement.gateway.view.Gateway', {
             hidden:true,
             align : 'center'
           },{
+			      xtype: 'rownumberer',
             text:'序号',
-            dataIndex:'number',
             sortable:true,
             width:50,
             align : 'center'
           },{
             text:'支付通道',
-            dataIndex:'type',
+            dataIndex:'name',
             sortable:true,
-            width:100,
+            width:120,
             editor:{
               xtype:'textfield'
             },
             align : 'center'
           },{
             text:'状态',
-            dataIndex:'permission',
+            dataIndex:'status',
             sortable:true,
-            width:200,
+            width:100,
             align : 'center'
           },{
             text:'费率',
-            dataIndex:'handle',
+            dataIndex:'rate',
             sortable:true,
-            width:200,
+            width:100,
             align : 'center'
           },{
             text:'自动开启时间',
-            dataIndex:'handle',
+            dataIndex:'createTime',
             sortable:true,
             width:200,
             align : 'center'
           },{
             text:'自动关闭时间',
-            dataIndex:'handle',
+            dataIndex:'updateTime',
             sortable:true,
             width:200,
             align : 'center'
           },
           {
-            text: '邮箱',
-            align : 'center',
-            dataIndex: 'email',
-            width: 200,
-            groupable: false,
-            renderer: function(v) {
-                return '<a href=' + v + '>' + v + '</a>';
-            }
-          },
-          {
                 menuDisabled: true,
                 sortable: false,
-                text:'删除',
+                text:'编辑',
                 align : 'center',
                 xtype: 'actioncolumn',
                 width: 100,
                 items: [{
-                    iconCls: 'x-fa fa-sign-out',
-                    tooltip: '删除',
-                    handler:  'onDelete'
+                    iconCls: 'x-fa fa-edit',
+                    tooltip: '编辑',
+                    handler:  'onEdit'
 
                 }]
               }
         ],
           // 工具栏
         tbar: [
-                {
+            {
               xtype: 'button',
-              text : '新增',
-              width:80//,
-              // reference:'appBatch'
+              text : '关闭',
+              width:60,
+              margin:'0 0 0 720',
+              reference:'close'
+            },{
+              xtype: 'button',
+              text : '开启',
+              width:60,
+              reference:'open'
                 }
             ],
             // 分页栏
           bbar: [
                 {
                     xtype: 'pagingtoolbar',
-                    pageSize: 20,
+                    pageSize: 10,
                     displayInfo: true,
                     emptyMsg: '没有数据',
                     displayMsg: '当前显示{0}-{1}条记录 / 共{2}条记录 ',

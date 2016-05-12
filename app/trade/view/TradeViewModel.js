@@ -1,6 +1,6 @@
-Ext.define('settlement.order.view.OrderViewModel', {
+Ext.define('settlement.trade.view.TradeViewModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.order',
+    alias: 'viewmodel.trade',
 
     requires: [
       'Ext.data.Store'
@@ -8,7 +8,7 @@ Ext.define('settlement.order.view.OrderViewModel', {
 
     stores:{
       //主服务信息
-      order:{
+      trade:{
         autoLoad: true,
         pageSize:10,
         proxy:{

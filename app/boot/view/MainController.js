@@ -28,7 +28,7 @@ Ext.define('settlement.boot.view.MainController', {
             store = navigationList.getStore(),
             node = store.findNode('routeId', hashTag) ||
                 store.findNode('viewType', hashTag),
-            view = (node && node.get('viewType')) || 'Teacher',
+            view = (node && node.get('viewType')) || '',
             lastView = me.lastView,
             existingItem = mainCard.child('component[routeId=' + hashTag + ']'),
             newView;

@@ -116,13 +116,18 @@ Ext.define('settlement.gateway.view.Gateway', {
               text : '关闭',
               width:60,
               margin:'0 0 0 720',
-              reference:'close'
+              listeners:{
+                click:'onIsOpen'
+              }
             },{
               xtype: 'button',
               text : '开启',
+              itemId:'gatewayOpen',
               width:60,
-              reference:'open'
-                }
+              listeners:{
+                click:'onIsOpen'
+              }
+            }
             ],
             // 分页栏
           bbar: [

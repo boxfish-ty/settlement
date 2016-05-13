@@ -13,7 +13,7 @@ Ext.define('settlement.trade.view.TradeViewModel', {
         pageSize:10,
         proxy:{
           type:'rest',
-          url:URL_PREFIX+'/pay/order/page',
+          url:URL_PREFIX+'/pay/trade/page',
           reader:{
             type:'json',
             rootProperty:'data.content',

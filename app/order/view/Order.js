@@ -29,8 +29,8 @@ Ext.define('settlement.order.view.Order', {
     items:[
       {
         xtype:'gridpanel',
-        reference:'orderCenterGrid',
-        itemId:'orderCenterGrid',
+        reference:'orderGrid',
+        itemId:'orderGrid',
         flex: 1,
         height:800,
         style: {
@@ -113,50 +113,46 @@ Ext.define('settlement.order.view.Order', {
                       xtype: 'textfield',
                       fieldLabel:'用户ID',
                       labelWidth:45,
-                      name: 'condition',
-                      // itemId: 'userIDQuery',
-                      // reference:'userIDQuery',
+                      name: 'userId',
+                      itemId: 'order_userId',
                       width:130,
-                      emptyText: '',
                       allowBlank: true,
                       listeners:{
+                        specialkey:'onEnter'
                       }
                   },{
                       xtype: 'textfield',
                       fieldLabel:'账号',
-                      labelWidth:45,
-                      name: 'condition',
-                      // itemId: 'codeQuery',
-                      // reference:'codeQuery',
+                      labelWidth:35,
+                      name: 'account',
+                      itemId: 'order_account',
                       width:170,
                       emptyText: '',
                       allowBlank: true,
                       listeners:{
+                        specialkey:'onEnter'
                       }
                   },
                   {
                       xtype: 'textfield',
-                      fieldLabel:'订单号',
-                      labelWidth:45,
-                      name: 'condition',
-                      // itemId: 'codeQuery',
-                      // reference:'codeQuery',
+                      fieldLabel:'订单编号',
+                      labelWidth:58,
+                      name: 'orderCode',
+                      itemId: 'order_orderCode',
                       width:170,
                       emptyText: '',
                       allowBlank: true,
                       listeners:{
+                        specialkey:'onEnter'
                       }
                 },{
                      xtype: 'combobox',
                      fieldLabel: '订单状态',
                      labelWidth:60,
                      width:170,
-                     itemId: 'orderStatusComboBox',
-                     reference:'orderStatusComboBox',
-                     bind:{
-                      // store:'{statusComboBox}'
-                     },
-                     value:'all',
+                     itemId: 'order_orderStatus',
+                     value:'',
+                     name:'orderStatus',
                      forceSelection: true,
                      loadMask:false,
                      triggerAction:'all',
@@ -164,7 +160,7 @@ Ext.define('settlement.order.view.Order', {
                      editable: false,
                      displayField: 'value',
                      valueField: 'key',
-                    //  emptyText: '请选择',
+                     store:'OrderStatus',
                      allowBlank: true
                  },{
                      xtype: 'datefield',
@@ -175,7 +171,10 @@ Ext.define('settlement.order.view.Order', {
                      width:185,
                      name: 'beginDate',
                      maxValue: new Date(),
-                     itemId:'beginDate'
+                     itemId:'order_beginDate',
+                     listeners:{
+                       specialkey:'onEnter'
+                     }
                  },{
                              html: '至',
                              padding:'0 0 0 2'
@@ -186,7 +185,10 @@ Ext.define('settlement.order.view.Order', {
                      width:125,
                      name: 'endDate',
                      maxValue: new Date(),
-                     itemId:'endDate'
+                     itemId:'order_endDate',
+                     listeners:{
+                       specialkey:'onEnter'
+                     }
                  }, {
                      text: '查询',
                      iconCls: 'x-fa fa-search',

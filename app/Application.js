@@ -9,7 +9,7 @@ Ext.define('settlement.Application', {
     name: 'settlement',
 
     stores: [
-        'NavigationTree'
+        'NavigationTree','OrderStatus','PayStatus'
     ],
 
     launch: function () {

@@ -10,21 +10,23 @@ Ext.define('settlement.trade.view.TradeController', {
         var tradeAddFilterBtn   = (Ext.ComponentQuery.query('[itemId=tradeAddFilterBtn]')[0]);
         var collapsing     = tradeAddFilter.micro;
 
-        tradeAddFilter.animate({dynamic: true,to: {height:collapsing?100:50}});
+        tradeAddFilter.animate({dynamic: true,to: {height:collapsing?76:40}});
         tradeAddFilter.micro=(collapsing?false:true);
         tradeAddFilterBtn.setText(collapsing?'-':'+');
     },
 
     //初始化宽高
     onInit:function(grid, eOpts){
-        grid.setHeight((document.body.scrollHeight*0.09)*10);
+        grid.setHeight((document.body.scrollHeight*0.085)*10);
+        grid.setWidth((document.body.scrollHeight*0.09)*10);
     },
 
     //搜索
     onSearchClick:function(){
-      var grid = this.lookupReference('pond_Grid');
+      var grid = this.lookupReference('tradeGrid');
       var store=grid.getStore();
-      var params=this.createQueryParams(['pond_NickName','pond_Name','pond_School','pond_StartDate','pond_EndDate']);
+      var params=this.createQueryParams(['trade_userId','trade_account','trade_orderCode','trade_orderStatus','trade_payStatus'
+      ,'trade_orderStartTime','trade_orderEndTime','trade_payStartTime','trade_payEndTime']);
       store.reload({params:params});
 
     },

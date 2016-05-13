@@ -8,6 +8,8 @@ Ext.define('settlement.gateway.view.Edit', {
     ],
     controller:'edit',
     viewModel: {type: 'edit'},
+    itemId:'editContainer',
+
     items: [{
         xtype:'form',
         bodyPadding: 5,
@@ -16,42 +18,35 @@ Ext.define('settlement.gateway.view.Edit', {
         items: [{
             xtype:'textfield',
             fieldLabel: '费率',
+            reference:'editRate',
             labelWidth:40,
             width:160,
             name: 'rate',
             allowBlank: true
         }, {
-            xtype      : 'fieldcontainer',
-            fieldLabel : '状态',
-            labelWidth : 40,
-            defaultType: 'radiofield',
-            defaults: {
-                flex: 1
-            },
-            layout: 'hbox',
-            items: [
-                {
-                    boxLabel  : '立即开启',
-                    name      : '状态',
-                    inputValue: 'true',
-                    id        : 'open'
-                }, {
-                    boxLabel  : '立即关闭',
-                    name      : '状态',
-                    inputValue: 'false',
-                    margin    : '0 0 0 10',
-                    id        : 'close'
-                }
-            ]
-        }
+        xtype: 'radiogroup',
+        fieldLabel: '状态',
+        labelWidth:40,
+        columns: 2,
+        width:230,
+        vertical: true,
+        items: [
+            { boxLabel: '立即开启',width:100, name: 'rb', inputValue: 1},
+            { boxLabel: '立即关闭',width:100, name: 'rb', inputValue: 0}
+        ]
+            }
         ],
 
         buttons: [{
             text: '取消',
-            handler:'onCancel'
+            listeners:{
+              click:'onCancel'
+            }
         }, {
             text: '保存',
-            handler: 'onSave'
+            listeners:{
+              click:'onSave'
+            }
         }]
       }]
 });

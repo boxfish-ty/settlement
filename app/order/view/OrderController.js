@@ -12,9 +12,9 @@ Ext.define('settlement.order.view.OrderController', {
 
     //搜索
     onSearchClick:function(){
-      var grid = this.lookupReference('pond_Grid');
+      var grid = this.lookupReference('orderGrid');
       var store=grid.getStore();
-      var params=this.createQueryParams(['pond_NickName','pond_Name','pond_School','pond_StartDate','pond_EndDate']);
+      var params=this.createQueryParams(['order_userId','order_account','order_orderCode','order_orderStatus','order_beginDate','order_endDate']);
       store.reload({params:params});
 
     },

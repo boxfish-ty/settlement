@@ -17,7 +17,7 @@ Ext.define('settlement.login.view.LoginController', {
                     username:form.items[0].getValue(),
                     password:form.items[1].getValue()
                   }),
-                  headers:{'Content-Type': "application/3w-" },
+                  headers:{'Content-Type': "application/json" },
                   success:function(response){
 
                       resObj=Ext.decode(response.responseText);

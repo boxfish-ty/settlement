@@ -60,9 +60,12 @@
      *          "charts"
      *      ]
      */
-    "requires": [
-        "font-awesome"
-    ],
+     "requires": [
+         "font-awesome",
+         "ext-locale"
+     ],
+     "locale": "zh_CN",
+
 
     /**
      * Fashion build configuration properties.

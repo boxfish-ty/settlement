@@ -2,27 +2,47 @@ Ext.define('settlement.login.view.LoginController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.login',
 
-//确认登录
+    //确认登录
     onLogin: function(button, e, eOpts) {
-          //获得对话框
-          var logindialog = this.lookupReference('logindialog');
-          //获得错误提示tip
-          var errorTip=this.lookupReference('errorTip');
-        //得到用户名
-          var userid=logindialog.getForm().getFields().items[0];
-          var value1=userid.getValue();
-        //得到输入密码
-          var password=logindialog.getForm().getFields().items[1];
-          var value2=password.getValue();
-          if((value1=='boxfish')&&(value2=='123456')){
-            Ext.toast('登录成功!', null, 't');
-            var app=settlement.getApplication();
-            app.getMainView().destroy();
-            app.setMainView('settlement.boot.view.Main');
+        var me=this;
 
-          }else {
-            errorTip.show();
-          }
+          var logindialog = this.lookupReference('logindialog');
+          var errorTip    = this.lookupReference('errorTip');
+          var form        = logindialog.getForm().getFields();
+
+          Ext.Ajax.request({
+                  method:'POST',
+                  url:URL_LOGIN_PREFIX+'/web/common/adminLogin',
+                  params: JSON.stringify({
+                    username:form.items[0].getValue(),
+                    password:form.items[1].getValue()
+                  }),
+                  headers:{'Content-Type': "application/3w-" },
+                  success:function(response){
+
+                      resObj=Ext.decode(response.responseText);
+                      if(resObj.data!=null)
+                      {
+                        Ext.toast('登录成功!', null, 't');
+                        localStorage.setItem('username','yes');
+
+                        var app=settlement.getApplication();
+                        app.getMainView().destroy();
+                        app.setMainView('settlement.boot.view.Main');
+                        me.redirectTo('Order');
+                      }else
+                      {
+                          me.lookupReference('errorTip').show();
+                          console.warn('请求失败');
+                          return;
+                      }
+                  },
+                  failure:function(response){
+                    console.error('后台请求数据出错了！！！\n错误信息: \n'+response.responseText);
+                  }
+                });
+
+
     },
 
     //监听聚焦

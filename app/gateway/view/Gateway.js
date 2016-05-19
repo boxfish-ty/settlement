@@ -54,7 +54,8 @@ Ext.define('settlement.gateway.view.Gateway', {
             width:150,
             hidden:true,
             align : 'center'
-          },{
+          }
+          ,{
 			      xtype: 'rownumberer',
             text:'序号',
             sortable:true,
@@ -74,7 +75,10 @@ Ext.define('settlement.gateway.view.Gateway', {
             dataIndex:'status',
             sortable:true,
             width:100,
-            align : 'center'
+            align : 'center',
+            renderer: function(value, meta, record) {
+                return record.get('status')==0?'开启':'关闭';
+            }
           },{
             text:'费率',
             dataIndex:'rate',

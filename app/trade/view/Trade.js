@@ -52,8 +52,8 @@ Ext.define('settlement.trade.view.Trade', {
                   }
               },{
                   xtype: 'textfield',
-                  name: 'account',
-                  itemId: 'trade_account',
+                  name: 'username',
+                  itemId: 'trade_username',
                   labelWidth:35,
                   width:170,
                   margin:'0 0 0 10',
@@ -79,7 +79,7 @@ Ext.define('settlement.trade.view.Trade', {
                  xtype: 'combobox',
                  itemId: 'trade_orderStatus',
                  store:'OrderStatus',
-                 name:'orderStatus',
+                 name:'orderType',
                  value:'',
                  forceSelection: true,
                  fieldLabel: '订单状态',
@@ -88,16 +88,14 @@ Ext.define('settlement.trade.view.Trade', {
                  margin:'0 0 0 10',
                  loadMask:false,
                  triggerAction:'all',
-                //  multiSelect: true,
                  editable: false,
                  displayField: 'value',
                  valueField: 'key',
-                //  emptyText: '订单状态',
                  allowBlank: true
              },{
                   xtype: 'combobox',
                   itemId: 'trade_payStatus',
-                  name:'payStatus',
+                  name:'payType',
                   store:'PayStatus',
                   value:'',
                   forceSelection: true,
@@ -226,11 +224,14 @@ Ext.define('settlement.trade.view.Trade', {
                         hidden:true,
                         align : 'center'
                       },{
-                        text:'用户ID',
-                        dataIndex:'userId',
+                        text:'账号',
+                        dataIndex:'userInfo',
                         sortable:true,
-                        width:70,
-                        align : 'center'
+                        width:150,
+                        align : 'center',
+                        renderer: function(value, meta, record) {
+                            return (record.get('userInfo')).username;
+                        }
                       },{
                         text:'支付流水号',
                         dataIndex:'tradeCode',

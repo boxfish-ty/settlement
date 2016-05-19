@@ -14,7 +14,7 @@ Ext.define('settlement.order.view.OrderController', {
     onSearchClick:function(){
       var grid = this.lookupReference('orderGrid');
       var store=grid.getStore();
-      var params=this.createQueryParams(['order_userId','order_account','order_orderCode','order_orderStatus','order_beginDate','order_endDate']);
+      var params=this.createQueryParams(['order_userId','order_username','order_orderCode','order_orderStatus','order_beginDate','order_endDate']);
       store.reload({params:params});
 
     },

@@ -25,7 +25,7 @@ Ext.define('settlement.trade.view.TradeController', {
     onSearchClick:function(){
       var grid = this.lookupReference('tradeGrid');
       var store=grid.getStore();
-      var params=this.createQueryParams(['trade_userId','trade_account','trade_orderCode','trade_orderStatus','trade_payStatus'
+      var params=this.createQueryParams(['trade_userId','trade_username','trade_orderCode','trade_orderStatus','trade_payStatus'
       ,'trade_orderStartTime','trade_orderEndTime','trade_payStartTime','trade_payEndTime']);
       store.reload({params:params});
 

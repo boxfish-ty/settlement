@@ -15,7 +15,14 @@ Ext.define('settlement.boot.view.MainController', {
     },
 
     lastView: null,
-
+    checkoutLogin:function(){
+      if(localStorage.length<1)
+      {
+          var app=settlement.getApplication();
+          app.setMainView('settlement.login.view.Login');
+          this.redirectTo("Login");
+      }
+    },
     // 功能页面 加载
     setCurrentView: function (hashTag) {
         hashTag = (hashTag || '').toLowerCase();
@@ -75,7 +82,7 @@ Ext.define('settlement.boot.view.MainController', {
 
         me.lastView = newView;
     },
-
+    onfocus:function(){},
     onNavigationTreeSelectionChange: function (tree, node) {
         var to = node && (node.get('routeId') || node.get('viewType'));
 
@@ -91,10 +98,13 @@ Ext.define('settlement.boot.view.MainController', {
         if (!window.location.hash) {
             this.redirectTo("");
         }
+        this.checkoutLogin();
     },
 
     onRouteChange: function (id) {
+      if(id=='Login')return false;
         this.setCurrentView(id);
+
     },
 
     // 导航栏 切换模式
@@ -142,6 +152,7 @@ Ext.define('settlement.boot.view.MainController', {
 
     // 退出系统退出按钮事件
     exitClick:function(btn){
+      localStorage.clear();
       var app=settlement.getApplication();
       app.getMainView().destroy();
       app.setMainView('settlement.login.view.Login');

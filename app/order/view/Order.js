@@ -65,16 +65,22 @@ Ext.define('settlement.order.view.Order', {
             align : 'center'
           },{
             text:'账号',
-            dataIndex:'code',
+            dataIndex:'userInfo',
             sortable:true,
             width:150,
-            align : 'center'
+            align : 'center',
+            renderer: function(value, meta, record) {
+                return (record.get('userInfo')).username;
+            }
           },{
             text:'姓名',
             dataIndex:'name',
             sortable:true,
             width:100,
-            align : 'center'
+            align : 'center',
+            renderer: function(value, meta, record) {
+                return (record.get('userInfo')).realName;
+            }
           },{
             text:'订单编号',
             dataIndex:'orderCode',
@@ -83,13 +89,13 @@ Ext.define('settlement.order.view.Order', {
             align : 'center'
           },{
             text:'金额',
-            dataIndex:'payTrades.payMoney',
+            dataIndex:'totalPrice',
             sortable:true,
             width:100,
             align : 'center'
           },{
             text:'下单时间',
-            dataIndex:'createTime',
+            dataIndex:'orderTime',
             sortable:true,
             width:150,
             align : 'center'
@@ -98,12 +104,6 @@ Ext.define('settlement.order.view.Order', {
             dataIndex:'orderStatus',
             sortable:true,
             width:100,
-            align : 'center'
-          },{
-            text:'服务内容',
-            dataIndex:'content',
-            sortable:true,
-            width:200,
             align : 'center'
           }
         ],
@@ -124,8 +124,8 @@ Ext.define('settlement.order.view.Order', {
                       xtype: 'textfield',
                       fieldLabel:'账号',
                       labelWidth:35,
-                      name: 'account',
-                      itemId: 'order_account',
+                      name: 'username',
+                      itemId: 'order_username',
                       width:170,
                       emptyText: '',
                       allowBlank: true,

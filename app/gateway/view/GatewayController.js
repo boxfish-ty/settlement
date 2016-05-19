@@ -11,15 +11,17 @@ Ext.define('settlement.gateway.view.RoleController', {
 
     //编辑
     onEdit:function(grid, rowIndex, colIndex){
-      var id=(grid.getStore().getData()).items[rowIndex].id;
+      var row = (grid.getStore().getData()).items[rowIndex];
       var edit = Ext.create('settlement.gateway.view.Edit');
       new Ext.Window({
-                  gid:id,
+                  gid:row.data.id,
+                  gatewayStatus:row.data.status,
+                  rate:row.data.rate,
                   title: '通道信息',
                   height:190,
                   width: 280,
                   modal:true,
-                  itemId:'editWindow',
+                  itemId:'gatewayEditWindow',
                   items:[edit]
               }).show();
     },

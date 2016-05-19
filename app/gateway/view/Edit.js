@@ -1,5 +1,5 @@
 Ext.define('settlement.gateway.view.Edit', {
-    extend: 'Ext.container.Container',
+    extend: 'Ext.form.Panel',
     xtype: 'Edit',
     requires: [
         'Ext.grid.*',
@@ -15,24 +15,29 @@ Ext.define('settlement.gateway.view.Edit', {
         bodyPadding: 5,
         width: 270,
         layout: 'vbox',
+        listeners:{
+            afterrender:'initEdit'
+          },
         items: [{
             xtype:'textfield',
             fieldLabel: '费率',
             reference:'editRate',
+            itemId:'gatewayEditRate',
             labelWidth:40,
             width:160,
             name: 'rate',
-            allowBlank: true
+            allowBlank: false
         }, {
         xtype: 'radiogroup',
         fieldLabel: '状态',
+        itemId:'gatewayRadio',
         labelWidth:40,
         columns: 2,
         width:230,
         vertical: true,
         items: [
-            { boxLabel: '立即开启',width:100, name: 'rb', inputValue: 1},
-            { boxLabel: '立即关闭',width:100, name: 'rb', inputValue: 0}
+            { boxLabel: '立即开启',width:100, name: 'rb', inputValue: 0},
+            { boxLabel: '立即关闭',width:100, name: 'rb', inputValue: 1}
         ]
             }
         ],
@@ -44,6 +49,8 @@ Ext.define('settlement.gateway.view.Edit', {
             }
         }, {
             text: '保存',
+            disabled: true,
+            formBind: true,
             listeners:{
               click:'onSave'
             }

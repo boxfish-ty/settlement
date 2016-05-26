@@ -36,8 +36,8 @@ Ext.define('settlement.gateway.view.Edit', {
         width:230,
         vertical: true,
         items: [
-            { boxLabel: '立即开启',width:100, name: 'rb', inputValue: 0},
-            { boxLabel: '立即关闭',width:100, name: 'rb', inputValue: 1}
+            { boxLabel: '立即开启',width:100, name: 'rb', inputValue: 1},
+            { boxLabel: '立即关闭',width:100, name: 'rb', inputValue: 0}
         ]
             }
         ],

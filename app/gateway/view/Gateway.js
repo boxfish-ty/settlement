@@ -77,7 +77,7 @@ Ext.define('settlement.gateway.view.Gateway', {
             width:100,
             align : 'center',
             renderer: function(value, meta, record) {
-                return record.get('status')==0?'开启':'关闭';
+                return record.get('status')==0?'关闭':'开启';
             }
           },{
             text:'费率',

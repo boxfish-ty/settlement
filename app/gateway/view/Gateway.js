@@ -54,6 +54,12 @@ Ext.define('settlement.gateway.view.Gateway', {
             width:150,
             hidden:true,
             align : 'center'
+          },
+          {
+            dataIndex:'payChannel',
+            sortable:true,
+            hidden:true,
+            align : 'center'
           }
           ,{
 			      xtype: 'rownumberer',
@@ -79,13 +85,15 @@ Ext.define('settlement.gateway.view.Gateway', {
             renderer: function(value, meta, record) {
                 return record.get('status')==0?'关闭':'开启';
             }
-          },{
-            text:'费率',
-            dataIndex:'rate',
-            sortable:true,
-            width:100,
-            align : 'center'
-          },{
+          }
+          // ,{
+          //   text:'费率',
+          //   dataIndex:'rate',
+          //   sortable:true,
+          //   width:100,
+          //   align : 'center'
+          // }
+          ,{
             text:'自动开启时间',
             dataIndex:'createTime',
             sortable:true,

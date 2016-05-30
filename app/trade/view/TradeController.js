@@ -4,6 +4,9 @@ Ext.define('settlement.trade.view.TradeController', {
     require:[
       'Ext.grid.*','Ext.data.Model'
     ],
+    mixins:{
+      tools:'settlement.tools.Tools'
+    },
     //搜索栏 拉伸
     onAddFilter:function(){
         var tradeAddFilter  = (Ext.ComponentQuery.query('[itemId=tradeAddFilter]')[0]);
@@ -25,8 +28,7 @@ Ext.define('settlement.trade.view.TradeController', {
     onSearchClick:function(){
       var grid = this.lookupReference('tradeGrid');
       var store=grid.getStore();
-      var params=this.createQueryParams(['trade_userId','trade_username','trade_orderCode','trade_orderStatus','trade_payStatus'
-      ,'trade_orderStartTime','trade_orderEndTime','trade_payStartTime','trade_payEndTime']);
+      var params=this.createQueryParams(['trade_username','trade_orderCode','trade_orderStatus','trade_payStatus']);
       store.reload({params:params});
 
     },

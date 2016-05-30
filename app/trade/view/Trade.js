@@ -39,18 +39,19 @@ Ext.define('settlement.trade.view.Trade', {
               padding:'3 0 5 10',
               layout:'hbox',
               items:[
-                {
-                  xtype: 'textfield',
-                  name: 'userId',
-                  itemId: 'trade_userId',
-                  labelWidth:45,
-                  width:130,
-                  fieldLabel: '用户ID',
-                  allowBlank: true,
-                  listeners:{
-                    specialkey:'onEnter'
-                  }
-              },{
+              //   {
+              //     xtype: 'textfield',
+              //     name: 'userId',
+              //     itemId: 'trade_userId',
+              //     labelWidth:45,
+              //     width:130,
+              //     fieldLabel: '用户ID',
+              //     allowBlank: true,
+              //     listeners:{
+              //       specialkey:'onEnter'
+              //     }
+              // },
+              {
                   xtype: 'textfield',
                   name: 'username',
                   itemId: 'trade_username',
@@ -111,83 +112,90 @@ Ext.define('settlement.trade.view.Trade', {
                   valueField: 'key',
                   // emptyText: '支付状态',
                   allowBlank: true
-              },{
-                xtype:'button',
-                text:'+',
-                width:30,
-                margin:'0 0 0 20',
-                itemId:'tradeAddFilterBtn',
-                handler:'onAddFilter'
-              },
+              }
+              // ,{
+              //   xtype:'button',
+              //   text:'+',
+              //   width:30,
+              //   margin:'0 0 0 20',
+              //   itemId:'tradeAddFilterBtn',
+              //   handler:'onAddFilter'
+              // }
+              ,
               {
                xtype:'button',
                text:'查询',
                margin:'0 0 0 100',
                handler:'onSearchClick'
              }]
-              },
-             {
-               xtype:'container',
-               layout:'hbox',
-               items:[
-                 {
-                        xtype: 'datefield',
-                        anchor: '100%',
-                        padding:'0 0 0 10',
-                        fieldLabel:'下单时间',
-                        labelWidth:60,
-                        width:185,
-                        name: 'orderStartTime',
-                        maxValue: new Date(),
-                        itemId:'trade_orderStartTime',
-                        listeners:{
-                          specialkey:'onEnter'
-                        }
-                    },{
-                                html: '—',
-                                padding:'7 0 0 0'
-                        },
-                    {
-                        xtype: 'datefield',
-                        anchor: '100%',
-                        width:125,
-                        name: 'orderEndTime',
-                        maxValue: new Date(),
-                        itemId:'trade_orderEndTime',
-                        listeners:{
-                          specialkey:'onEnter'
-                        }
-                    },
-                    {
-                       xtype: 'datefield',
-                       anchor: '100%',
-                       padding:'0 0 0 10',
-                       fieldLabel:'付款时间',
-                       labelWidth:60,
-                       width:185,
-                       name: 'payStartTime',
-                       maxValue: new Date(),
-                       itemId:'trade_payStartTime',
-                       listeners:{
-                         specialkey:'onEnter'
-                       }
-                   },{
-                               html: '—',
-                               padding:'7 0 0 0'
-                       },
-                   {
-                       xtype: 'datefield',
-                       anchor: '100%',
-                       width:125,
-                       name: 'payEndTime',
-                       maxValue: new Date(),
-                       itemId:'trade_payEndTime',
-                       listeners:{
-                         specialkey:'onEnter'
-                       }
-                   }
-               ]
-             }
+              }
+            //   ,
+            //  {
+            //    xtype:'container',
+            //    layout:'hbox',
+            //    items:[
+            //      {
+            //             xtype: 'datefield',
+            //             anchor: '100%',
+            //             padding:'0 0 0 10',
+            //             fieldLabel:'下单时间',
+            //             labelWidth:60,
+            //             width:185,
+            //             name: 'orderStartTime',
+            //             format:'Y-m-d',
+            //             maxValue: new Date(),
+            //             itemId:'trade_orderStartTime',
+            //             listeners:{
+            //               specialkey:'onEnter'
+            //             }
+            //         },{
+            //                     html: '—',
+            //                     padding:'7 0 0 0'
+            //             },
+            //         {
+            //             xtype: 'datefield',
+            //             anchor: '100%',
+            //             width:125,
+            //             name: 'orderEndTime',
+            //             format:'Y-m-d',
+            //             maxValue: new Date(),
+            //             itemId:'trade_orderEndTime',
+            //             listeners:{
+            //               specialkey:'onEnter'
+            //             }
+            //         },
+            //         {
+            //            xtype: 'datefield',
+            //            anchor: '100%',
+            //            padding:'0 0 0 10',
+            //            fieldLabel:'付款时间',
+            //            labelWidth:60,
+            //            width:185,
+            //            name: 'payStartTime',
+            //            format:'Y-m-d',
+            //            maxValue: new Date(),
+            //            itemId:'trade_payStartTime',
+            //            listeners:{
+            //              specialkey:'onEnter'
+            //            }
+            //        },{
+            //                    html: '—',
+            //                    padding:'7 0 0 0'
+            //            },
+            //        {
+            //            xtype: 'datefield',
+            //            anchor: '100%',
+            //            width:125,
+            //            name: 'payEndTime',
+            //            format:'Y-m-d',
+            //            maxValue: new Date(),
+            //            itemId:'trade_payEndTime',
+            //            listeners:{
+            //              specialkey:'onEnter'
+            //            }
+            //        }
+            //    ]
+            //  }
 
             ]
       },

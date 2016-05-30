@@ -10,7 +10,7 @@ Ext.define('settlement.gateway.view.EditController', {
     initEdit:function(){
        var winObj = this.getQuery('gatewayEditWindow');
        this.getQuery('gatewayRadio').setValue({rb:winObj.gatewayStatus});
-       this.getQuery('gatewayEditRate').setValue(winObj.rate);
+       this.getQuery('gatewayEditName').setValue(winObj.name);
     },
 
     onCancel:function(btn, e, eOpts){
@@ -20,15 +20,15 @@ Ext.define('settlement.gateway.view.EditController', {
     onSave:function(btn, e, eOpts){
         var me=this;
         var grid     = this.getQuery('gatewayGrid');
-        var rate     = this.lookupReference('editRate').getValue();
-        var gid      = this.getQuery('gatewayEditWindow').gid;
-        var status   = (this.getQuery('gatewayRadio').getValue()).rb;
+        var payChannel= this.getQuery('gatewayEditWindow').payChannel;
+        var name      = this.getQuery('gatewayEditName').getValue();
+        var status    = (this.getQuery('gatewayRadio').getValue()).rb;
 
         Ext.Ajax.request({
                 method:'PUT',
                 url:URL_PREFIX+'/payment/gateway/update',
                 headers:{'Content-Type': "application/json" },
-                params : JSON.stringify({'id':gid,'status':status,'rate':rate}),
+                params : JSON.stringify({'status':status,'payChannel':payChannel,'name':name}),
                 success:function(response){
                     resObj=Ext.decode(response.responseText);
 

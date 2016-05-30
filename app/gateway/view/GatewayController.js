@@ -14,9 +14,10 @@ Ext.define('settlement.gateway.view.RoleController', {
       var row = (grid.getStore().getData()).items[rowIndex];
       var edit = Ext.create('settlement.gateway.view.Edit');
       new Ext.Window({
-                  gid:row.data.id,
+                  payChannel:row.data.payChannel,
+                  name:row.data.name,
                   gatewayStatus:row.data.status,
-                  rate:row.data.rate,
+                  // rate:row.data.rate,
                   title: '通道信息',
                   height:190,
                   width: 280,
@@ -39,12 +40,12 @@ Ext.define('settlement.gateway.view.RoleController', {
         return;
       }
 
-      var gatewayId=record[0].data.id;
+      var payChannel=record[0].data.payChannel;
       var Operation=((btn.getItemId()=='gatewayOpen')?'on':'off');
 
       Ext.Ajax.request({
               method:'PUT',
-              url:URL_PREFIX+'/payment/gateway/'+Operation+'/'+gatewayId,
+              url:URL_PREFIX+'/payment/gateway/'+Operation+'/'+payChannel,
               headers:{'Content-Type': "application/json" },
               success:function(response){
                   resObj=Ext.decode(response.responseText);

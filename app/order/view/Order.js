@@ -170,6 +170,7 @@ Ext.define('settlement.order.view.Order', {
                      labelWidth:60,
                      width:185,
                      name: 'beginDate',
+                     format:'Y-m-d',
                      maxValue: new Date(),
                      itemId:'order_beginDate',
                      listeners:{
@@ -184,6 +185,7 @@ Ext.define('settlement.order.view.Order', {
                      anchor: '100%',
                      width:125,
                      name: 'endDate',
+                     format:'Y-m-d',
                      maxValue: new Date(),
                      itemId:'order_endDate',
                      listeners:{

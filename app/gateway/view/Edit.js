@@ -18,16 +18,17 @@ Ext.define('settlement.gateway.view.Edit', {
         listeners:{
             afterrender:'initEdit'
           },
-        items: [{
+        items: [
+          {
             xtype:'textfield',
-            fieldLabel: '费率',
-            reference:'editRate',
-            itemId:'gatewayEditRate',
+            fieldLabel: '支付通道',
+            itemId:'gatewayEditName',
             labelWidth:40,
             width:160,
-            name: 'rate',
+            name: 'name',
             allowBlank: false
-        }, {
+        },
+        {
         xtype: 'radiogroup',
         fieldLabel: '状态',
         itemId:'gatewayRadio',
